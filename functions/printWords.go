@@ -19,6 +19,7 @@ func PrintWords(input []string, asciiFields []string, match string) {
 						return
 					}
 					startPoint := Start(int(char))
+					
 					if j >= strings.Index(word, match) && j < strings.Index(word, match)+len(match) && strings.ContainsRune(match, char) && strings.Contains(word, match) {
 						fmt.Print(Color() + asciiFields[startPoint+i] + "\033[0m")
 					} else {
