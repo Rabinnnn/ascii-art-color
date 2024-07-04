@@ -14,16 +14,21 @@ func PrintWords(input []string, asciiFields []string, match string) {
 			fmt.Println()
 		} else {
 			for i := 0; i < 8; i++ {
-				for j, char := range word {
+				j := 0
+				for j < len(word) {
+					char := rune(word[j])
 					if !validChar(char) {
 						return
 					}
 					startPoint := Start(int(char))
-					
-					if j >= strings.Index(word, match) && j < strings.Index(word, match)+len(match) && strings.ContainsRune(match, char) && strings.Contains(word, match) {
-						fmt.Print(Color() + asciiFields[startPoint+i] + "\033[0m")
+					if strings.HasPrefix(word[j:], match) {
+						for k := 0; k < len(match); k++ {
+							fmt.Print(Color() + asciiFields[Start(int(word[j+k]))+i] + "\033[0m")
+						}
+						j += len(match)
 					} else {
 						fmt.Print(asciiFields[startPoint+i])
+						j++
 					}
 				}
 				fmt.Println()
