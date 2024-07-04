@@ -4,7 +4,7 @@ import (
 	"flag"
 	//"fmt"
 )
-
+//Returns the ANSI code of the color passed as value to flag named color 
 func Color()string{
 	var colors = map[string]string{
 		"red":     "\033[31m",
