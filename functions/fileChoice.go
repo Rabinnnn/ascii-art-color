@@ -1,20 +1,25 @@
 package functions
-import(
-	"strings"
+
+import (
 	"fmt"
 	"os"
+	"strings"
 )
 
 // FileChoice function reads the standard.txt banner file and returns its contents
 func FileChoice(osArgs []string) []string {
+	banner := "standard.txt"
 
-		file, err := os.ReadFile("standard.txt")
-		asciiFields := strings.Split(string(file), "\n")
-		if err != nil {
-			fmt.Println(err)
-			return []string{}
-		}
-	
+	if len(os.Args) == 3 && !(strings.HasPrefix(os.Args[1], "--color")) {
+		banner = osArgs[2] + ".txt"
+	}
+	file, err := os.ReadFile(banner)
+	if err != nil {
+		fmt.Println(err)
+		return []string{}
+	}
+	asciiFields := strings.Split(string(file), "\n")
+
 	if len(string(file)) == 0 {
 		fmt.Println("Empty file")
 		return []string{}
