@@ -2,12 +2,14 @@ package main
 
 import (
 	"os"
-
+	"fmt"
 	"ascii_art_color/functions"
 )
 
 func main() {
 	input, match, inputLen := functions.InputArgs(os.Args)
+	// fmt.Println(input)
+	// fmt.Println(match)
 
 	if inputLen == 0 {
 		return
@@ -18,5 +20,10 @@ func main() {
 		return
 	}
 
-	functions.PrintWords(input, asciiFields, match)
+	output := functions.PrintWords(input, asciiFields, match)
+	if output == ""{
+		return
+	}else{
+		fmt.Println(output)
+	}
 }

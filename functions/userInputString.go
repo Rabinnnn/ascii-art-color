@@ -10,6 +10,7 @@ import (
 // var args string
 // InputArgs function processes command-line arguments
 func InputArgs(osArgs []string) (string, string, int) {
+	fmt.Println(osArgs)
 	var args string
 	var match string
 	color := flag.String("color", "\033[0m", "Provide color code to be used for coloring.")
@@ -24,7 +25,7 @@ func InputArgs(osArgs []string) (string, string, int) {
 	// Variable to track if the flag was set
 	var nameSet bool
 	var flagSet bool = false
-	// Enforce the flag format to be used to be --output=<filename.txt>
+	// Enforce the flag format to be used to be --color=<filename.txt>
 	flag.Visit(func(f *flag.Flag) {
 		if f.Name == "color" {
 			flagSet = true
@@ -35,7 +36,8 @@ func InputArgs(osArgs []string) (string, string, int) {
 				nameSet = true
 			}
 		} else {
-			fmt.Println("Usage: go run . [OPTION] [STRING]\n\nEX: go run . --color=<color> <substring to be colored> \"something\"")
+		//	fmt.Println(f.Name)
+			fmt.Println("Usage: go run . [OPTION] [STRING]\n\nEX: go run . --color=<color> <substring to be colored> \"somethingNJLO\"")
 			return
 		}
 	})

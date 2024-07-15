@@ -6,7 +6,7 @@ import (
 )
 
 // Prints the respective Ascii Art characters
-func PrintWords(input1 string, asciiFields []string, match string) {
+func PrintWords(input1 string, asciiFields []string, match string)string {
 	input2 := strings.Split(input1, "\\n")
 
 	if isSliceEmpty(input2) {
@@ -17,7 +17,7 @@ func PrintWords(input1 string, asciiFields []string, match string) {
 			}
 		}
 
-		return
+		return ""
 
 	}
 
@@ -52,7 +52,7 @@ func PrintWords(input1 string, asciiFields []string, match string) {
 			continue
 		}
 		if !validChar(char) {
-			return
+			return ""
 		}
 		for i := 0; i < 8; i++ {
 			startPoint := Start(int(char))
@@ -79,7 +79,8 @@ func PrintWords(input1 string, asciiFields []string, match string) {
 		// fmt.Println(c/8, matchs, j, len(input1), len(word), word, match, input)
 
 	}
-	fmt.Println(strings.Join(arr, "\n"))
+	result := (strings.Join(arr, "\n"))
+	return result
 }
 
 // Determines starting position of the character
